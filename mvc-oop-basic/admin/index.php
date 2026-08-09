@@ -11,7 +11,7 @@ require_once './controllers/AdminNhaCungCapController.php';
 require_once './controllers/AdminSanPhamController.php';
 require_once './controllers/AdminDonHangController.php';
 require_once './controllers/AdminBaoCaoThongkeController.php';
-
+require_once './controllers/AdminTaiKhoanController.php';
 require_once './controllers/AdminLienHeController.php';
 
 
