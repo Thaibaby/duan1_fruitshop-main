@@ -1,17 +1,7 @@
 <?php require_once 'views/layout/header.php'; ?>
 
 <?php require_once 'views/layout/menu.php'; ?>
-<style>
-    .login-reg-form-wrap {
-        width: 100%;
-        max-width: 500px;
-        margin: 60px auto;
-    }
 
-    .col-lg-6 {
-        margin: 0 auto;
-    }
-</style>
 <main>
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
@@ -33,78 +23,41 @@
     <!-- breadcrumb area end -->
 
     <!-- login register wrapper start -->
-    <div class="col-lg-6">
-        <div class="login-reg-form-wrap sign-up-form">
-            <h5 class="text-center">Đăng kí</h5>
-
-            <?php if (isset($_SESSION['error'])) { ?>
-                <div class="alert alert-danger">
-
-                    <?php
-                    if (is_array($_SESSION['error'])) {
-                        foreach ($_SESSION['error'] as $error) {
-                            echo "<p class='text-center'>$error</p>";
-                        }
-                    } else {
-                        echo "<p class='text-center'>" . $_SESSION['error'] . "</p>";
-                    }
-                    ?>
-
-                </div>
-            <?php unset($_SESSION['error']);
-            } ?>
-
-            <?php if (isset($_SESSION['success'])) { ?>
-                <div class="alert alert-success text-center">
-                    <?= $_SESSION['success'] ?>
-                </div>
-            <?php unset($_SESSION['success']);
-            } ?>
-
-            <form action="<?= BASE_URL ?>?act=post-signup" method="POST">
-
-                <div class="single-input-item">
-                    <input type="text" name="ten" placeholder="Full Name" required>
-                </div>
-
-                <div class="single-input-item">
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-
-                <div class="single-input-item">
-                    <input type="date" name="ngay_sinh" required>
-                </div>
-
-                <div class="single-input-item">
-                    <input type="text" name="so_dien_thoai" placeholder="Số điện thoại" required>
-                </div>
-
-                <div class="single-input-item">
-                    <input type="text" name="dia_chi" placeholder="Địa chỉ" required>
-                </div>
-
+    <div class="login-register-wrapper section-padding">
+        <div class="container" style="max-width: 40vw;">
+            <div class="member-area-from-wrap">
                 <div class="row">
+                    <!-- Login Content Start -->
+                    <div class="col-lg-12">
+                        <div class="login-reg-form-wrap">
+                            <h5 class="text-center">Đăng nhập</h5>
+                            <?php if (isset($_SESSION['error'])) { ?>
+                                <p class="text-danger login-box-msg text-center"><?= is_string($_SESSION['error']) ? $_SESSION['error'] : '' ?></p>
+                            <?php } else { ?>
+                                <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
+                            <?php } ?>
+                            <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
+                                <div class="single-input-item">
+                                    <input type="email" placeholder="Email or Username" name="email" required />
+                                </div>
+                                <div class="single-input-item">
+                                    <input type="password" placeholder="Enter your Password" name="password" required />
+                                </div>
+                                <div class="single-input-item">
+                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
 
-                    <div class="col-lg-6">
-                        <div class="single-input-item">
-                            <input type="password" name="password" placeholder="Password" required>
+                                        <a href="#" class="forget-pwd">Quên mật khẩu</a>
+                                        <a href="<?= BASE_URL . '?act=signup' ?>" class="forget-pwd">Đăng kí</a>
+                                    </div>
+                                </div>
+                                <div class="single-input-item">
+                                    <button class="btn btn-sqr">Đăng nhập</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="single-input-item">
-                            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-                        </div>
-                    </div>
-
                 </div>
-
-                <div class="single-input-item">
-                    <button class="btn btn-sqr">Đăng ký</button>
-                </div>
-
-            </form>
-
+            </div>
         </div>
     </div>
     <!-- login register wrapper end -->
