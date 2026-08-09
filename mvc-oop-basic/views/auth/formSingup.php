@@ -2,6 +2,7 @@
 
 <?php require_once 'views/layout/menu.php'; ?>
 <style>
+
     .login-reg-form-wrap {
         width: 100%;
         max-width: 500px;
